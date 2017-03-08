@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="green_light">#ff99cc00</color>
+    <color name="nodeColor">#cccccc</color>
+    <color name="nodeTextColor">#F40C53</color>
+    <color name="colorPrimary">#406ca9</color>
+    <color name="colorPrimaryDark">#406ca9</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#ffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorLightWhite">#c9c8c8</color>
+    <color name="mediumseagreen">#3CB371</color><!--中海蓝 -->
+    <color name="pop_divider">#B6B6B6</color>
+    <color name="sr_color_primary">#FF4E3E7F</color>
+    <color name="sr_color_primary_dark">#FF4E3E7F</color>
+    <color name="sr_window_background">#FFFEFEFE</color>
+    <color name="public_blue_new">#48A5D1</color>
+    <color name="default_image_background">#FFDEDEDE</color>
+    <color name="primary">#785447</color>
+    <color name="primaryDark">#5B3F36</color>
+    <color name="bluecolorPrimary">#507E9F</color>
+    <color name="music_text">#9CBDCC</color>
+    <color name="textColorSecondary">#3C5F78</color>
+    <color name="favorite_background">#1ADDF9FF</color>
+    <!-- CharacterView -->
+    <color name="w_divider">#30ffffff</color>
+    <color name="music_bg">#DDF9FF</color>
+    <color name="popupmeun_bg">#B4D2E0</color>
+    <color name="musicplay_background">#1ADDF9FF</color>
+    <color name="alpha_05_white">#0DFFFFFF</color>
+    <color name="alpha_10_white">#1AFFFFFF</color>
+    <color name="alpha_15_white">#26FFFFFF</color>
+    <color name="alpha_20_white">#33FFFFFF</color>
+    <color name="alpha_25_white">#40FFFFFF</color>
+    <color name="alpha_30_white">#4DFFFFFF</color>
+    <color name="alpha_35_white">#59FFFFFF</color>
+    <color name="alpha_40_white">#66FFFFFF</color>
+    <color name="alpha_45_white">#73FFFFFF</color>
+    <color name="alpha_50_white">#80FFFFFF</color>
+    <color name="alpha_55_white">#8CFFFFFF</color>
+    <color name="alpha_60_white">#99FFFFFF</color>
+    <color name="alpha_65_white">#A6FFFFFF</color>
+    <color name="alpha_70_white">#B3FFFFFF</color>
+    <color name="alpha_75_white">#BFFFFFFF</color>
+    <color name="alpha_80_white">#CCFFFFFF</color>
+    <color name="alpha_85_white">#D9FFFFFF</color>
+    <color name="alpha_90_white">#E6FFFFFF</color>
+    <color name="alpha_95_white">#F2FFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="findtextcolorclick">#e5e5e5</color>
+
+    <color name="alpha_05_black">#0D000000</color>
+    <color name="alpha_10_black">#1A000000</color>
+    <color name="alpha_15_black">#26000000</color>
+    <color name="alpha_20_black">#33000000</color>
+    <color name="alpha_25_black">#40000000</color>
+    <color name="alpha_30_black">#4D000000</color>
+    <color name="alpha_35_black">#59000000</color>
+    <color name="alpha_40_black">#66000000</color>
+    <color name="alpha_45_black">#73000000</color>
+    <color name="alpha_50_black">#80000000</color>
+    <color name="alpha_55_black">#8C000000</color>
+    <color name="alpha_60_black">#99000000</color>
+    <color name="alpha_65_black">#A6000000</color>
+    <color name="alpha_70_black">#B3000000</color>
+    <color name="alpha_75_black">#BF000000</color>
+    <color name="alpha_80_black">#CC000000</color>
+    <color name="alpha_85_black">#D9000000</color>
+    <color name="alpha_90_black">#E6000000</color>
+    <color name="alpha_95_black">#F2000000</color>
+    <color name="black">#FF000000</color>
+    <color name="black_drak">#AA000000</color>
+
+    <color name="transparent">#00000000</color>
+
+    <integer-array name="gplus_colors">
+        <item>@color/gplus_color_1</item>
+        <item>@color/gplus_color_2</item>
+        <item>@color/gplus_color_3</item>
+        <item>@color/gplus_color_4</item>
+    </integer-array>
+
+    <color name="base_bg">#ffeeeeee</color>
+    <color name="selector_base_msg_color">#22999999</color>
+    <color name="base_msg_color">#ff999999</color>
+    <color name="gplus_color_1">#3e802f</color>
+    <color name="gplus_color_2">#f4b400</color>
+    <color name="gplus_color_3">#427fed</color>
+    <color name="gplus_color_4">#b23424</color>
+
+    <color name="dialogTxtColor">#0099fc</color>
+    <color name="dialogTxtColorPress">#8c0099fc</color>
+    <color name="material_deep_teal_20">#ff80cbc4</color>
+    <color name="material_deep_teal_20Press">#8c80cbc4</color>
+
+    <color name="background_tab_pressed">#6633B5E5</color>
+
+    <color name="navigation_checked_news_text_color">#FF4E3E80</color>
+    <color name="navigation_checked_picture_text_color">#FFBA4A49</color>
+    <color name="navigation_checked_video_text_color">#FFF16022</color>
+    <color name="navigation_checked_music_text_color">#FF14BF81</color>
+    <color name="navigation_checked_favor_text_color">#FFE1C247</color>
+
+    <color name="common_list_smart_tab_underline_color">#FFF24B17</color>
+
+    <color name="list_item_news_list_source_color">#FF999999</color>
+    <color name="list_item_news_list_date_color">#FFF58C47</color>
+
+    <color name="common_list_item_bg_pressed_color">#FFEEEEEE</color>
+    <color name="common_list_item_bg_normal_color">#FFFEFEFE</color>
+    <color name="w_text_primary">#ffffffff</color>
+    <color name="music_player_sb_bg">#FFFFE4D9</color>
+    <color name="music_player_sb_progress_color">#FFE64626</color>
+    <color name="music_player_sb_secondary_progress_color">#FFE87F6A</color>
+    <color name="music_player_user_name_color">#FF1A7BE8</color>
+
+    <color name="player_container_bg">#FFDDDDDD</color>
+
+    <color name="blue_light">#01A0FC</color>
+    <color name="blue_light_light">#C6EBFD</color>
+    <color name="blue_msg">#02A0F9</color>
+    <color name="blue">#0185CF</color>
+    <color name="blue_navy">#2627F9</color>
+    <color name="gray">#999999</color>
+    <color name="gray_light">#E6E9E2</color>
+    <color name="gray_light_light">#B3B3B3</color>
+    <color name="gray_light_light_light">#E3E1E1</color>
+    <color name="red_light">#FE1B1B</color>
+    <color name="orange_light">#FFA56A</color>
+    <color name="white_light">#F8F8F8</color>
+    <color name="white_navy">#E2E0E0</color>
+    <color name="gray_android">#FF888888</color>
+</resources>

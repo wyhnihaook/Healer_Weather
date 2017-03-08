@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="@drawable/divider_linearlayout"
+    android:showDividers="middle|end"
+    android:orientation="vertical">
+
+    <!--android:animateLayoutChanges="true"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/city_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:text="杭州市" />
+
+        <ImageView
+            android:id="@+id/more_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/more_message" />
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/delete_city"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="16dp"
+        android:gravity="center_vertical"
+        android:textSize="11dp"
+        android:drawablePadding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/delete"
+        android:text="@string/delete_city"/>
+</LinearLayout>
+
+
+    <!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:card_view="http://schemas.android.com/apk/res-auto"--><!--android:id="@+id/card_view"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_gravity="center"--><!--android:layout_margin="5dp"--><!--android:foreground="?android:attr/selectableItemBackground"--><!--android:paddingBottom="5dp"--><!--card_view:cardBackgroundColor="@android:color/white"--><!--card_view:cardCornerRadius="8dp"--><!--card_view:cardElevation="4dp">-->
+
+    <!--<TextView--><!--android:padding="10dp"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="杭州"/>-->
+
+    <!--</android.support.v7.widget.CardView>-->

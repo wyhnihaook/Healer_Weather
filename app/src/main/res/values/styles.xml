@@ -1,0 +1,110 @@
+<resources>
+    <style name="divider_all_horizontal_middle"><!-- 浅线水平全部分割粗线颜色深-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:background">@color/c_about_font</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="popupMenuStyle">@style/PopupMenu</item>
+        <item name="textAppearanceLargePopupMenu">@style/LargePopupMenu</item>
+        <item name="textAppearanceSmallPopupMenu">@style/SmallPopupMenu</item>
+    </style>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--状态栏颜色-->
+        <item name="colorPrimary">@color/gplus_color_3</item>
+        <!--Appbar背景色-->
+        <item name="colorPrimaryDark">@color/gplus_color_3</item>
+        <!--控制各个控件被选中时的颜色-->
+        <item name="colorAccent">@color/gplus_color_3</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@android:color/transparent</item>
+        <!--页面背景色-->
+        <item name="android:windowBackground">@color/sr_window_background</item>
+    </style>
+    <style name="PopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@color/popupmeun_bg</item>
+        <item name="android:dropDownHorizontalOffset">-24dp</item>
+        <item name="android:textAppearanceLargePopupMenu">@color/textColorSecondary</item>
+        <item name="android:textAppearanceSmallPopupMenu">@color/textColorSecondary</item>
+    </style>
+
+    <style name="LargePopupMenu" parent="TextAppearance.AppCompat.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="SmallPopupMenu" parent="TextAppearance.AppCompat.Widget.PopupMenu.Small">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <!--自定义dialog-->
+    <style name="DialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!--  边框-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item>
+        <!--半透明-->
+        <item name="android:windowNoTitle">true</item>
+        <!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="ProgressDialogStyle" parent="DialogStyle">
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 模糊 -->
+    </style>
+
+    <style name="divider_all_horizontal_deep_shapeBorder"><!-- 浅线水平全部分割 颜色深-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.01dp</item>
+        <item name="android:background">@color/shapeBorder</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="textView_style">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <style name="divider_all_horizontal_transport"><!-- 浅线水平全部分割 颜色深-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.01dp</item>
+        <item name="android:background">@color/alpha_15_white</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="divider_all_vertical_transport"><!-- 浅线水平全部分割 颜色深-->
+        <item name="android:layout_width">0.01dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/alpha_15_white</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!--手机自带动画效果取消-->
+    <style name="Theme.notAnimation" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/notAnimation</item>
+    </style>
+    <style name="notAnimation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
+    </style>
+</resources>

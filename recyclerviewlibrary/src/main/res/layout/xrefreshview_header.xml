@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/xrefreshview_header_text"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@android:color/white"
+    android:paddingBottom="10dp">
+
+    <FrameLayout
+        android:layout_toLeftOf="@+id/right_text"
+        android:id="@+id/left_images"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp">
+
+        <com.andview.refreshview.view.MyRoundCanvas
+            android:id="@+id/roundProgressBar2"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignLeft="@+id/roundProgressBar1"
+
+            android_custom:roundColor="@android:color/transparent"
+            android_custom:roundProgressColor="#adb4bd"
+            android_custom:textColor="#9A32CD"
+            android_custom:textIsDisplayable="false"
+            android_custom:roundWidth="1dip"
+            android_custom:textSize="18sp"
+            />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/xrefreshview_header_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrowdown" />
+
+        <!--<ProgressBar-->
+            <!--android:id="@+id/xrefreshview_header_progressbar"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:visibility="gone" />-->
+
+        <ImageView
+            android:id="@+id/refreshing_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/public_loading_circle"
+            android:visibility="gone"
+             />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/xrefreshview_header_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@+id/right_text"
+        android:src="@drawable/xrefresh_ok" />
+
+    <RelativeLayout
+        android:id="@+id/right_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:textSize="12dp"
+            android:id="@+id/xrefreshview_header_hint_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/xrefreshview_header_hint_normal" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/xrefreshview_header_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/xrefreshview_header_hint_textview"
+            android:layout_marginTop="3dp"
+            android:text="@string/xrefreshview_never_refresh"
+            android:textSize="12sp" />
+    </RelativeLayout>
+</RelativeLayout>

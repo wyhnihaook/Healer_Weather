@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@color/transparent"
+    >
+    <View style="@style/divider_all_horizontal_transport"
+        android:layout_alignParentTop="true"/>
+    <View style="@style/divider_all_horizontal_transport"
+        android:layout_alignParentBottom="true"/>
+    <View style="@style/divider_all_vertical_transport"
+        android:layout_alignParentRight="true"/>
+    <View style="@style/divider_all_vertical_transport"
+        android:layout_alignParentLeft="true"/>
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="vertical">
+    <ImageView
+        android:id="@+id/life_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:padding="3dp"
+        android:id="@+id/life_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/life_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textColor="@color/alpha_15_white"/>
+    </LinearLayout>
+</RelativeLayout>

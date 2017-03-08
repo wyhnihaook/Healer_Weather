@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Healer天气</string>
+    <string name="splash_logoname">Hello,翁翁翁翁翁翁先生</string>
+    <string name="splash_logodiscribe_morning">Good morning , Mr.Weng !</string>
+    <string name="splash_logodiscribe_afternoon">Good afternoon , Mr.Weng !</string>
+    <string name="splash_logodiscribe_night">Good night , Mr.Weng !</string>
+    <string name="splash_versionname">First generation</string>
+    <string name="splash_copyright">Copyright &#169; 2016 WYH_Healer All Rights Reserved\nPowered by May and Healer</string>
+    <string name="splash_version">V %1$s</string>
+    <string name="common_loading_message">Loading...</string>
+
+    <string name="common_empty_msg">暂无数据</string>
+    <string name="common_error_msg">请求错误</string>
+    <string name="common_no_network_msg">网络连接超时</string>
+
+    <string name="select_city">选择城市</string>
+    <string name="city">城市</string>
+
+    <string name="add_city">添加城市</string>
+    <string name="delete_city">删除城市</string>
+</resources>
