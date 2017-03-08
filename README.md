@@ -8,7 +8,8 @@ WYH_Healer 
 >Csdn:[WYH_Healer的博客](http://blog.csdn.net/wyh_healer)
 
 ---
-##### 本文着重书写了自定义View以及相关技术的展示，本文使用MVP思想进行数据整理和书写（由于学习不是很到位可能有写疏漏）以及基类的抽取使得Activity界面更加整洁大方。本文参考简阅已经搭好简略的框架，易懂易学，初学者的同学可以学习一下。
+#### 本文着重书写了自定义View以及相关技术的展示，本文使用MVP思想进行数据整理和书写（由于学习不是很到位可能有写疏漏）以及基类的抽取使得Activity界面更加整洁大方。本文参考简阅已经搭好简略的框架，易懂易学，初学者的同学可以学习一下。
+##### 重要的事情说三遍：主界面的界面是会动的哦！主界面的界面是会动的哦！！主界面的界面是会动的哦！！！海浪是真的在涌动，天空是真的在下雨哦（有一部分是不动的，但是不影响整体动画效果的学习）
 ## ![image](https://github.com/wyhnihaook/Healer_Weather/raw/master/img-holder/weather1.png)
 #### 欢迎界面重点是自定义View 右上角的倒计时器（相关对象：CountDownView）
 ## ![image](https://github.com/wyhnihaook/Healer_Weather/raw/master/img-holder/weather2.png)
