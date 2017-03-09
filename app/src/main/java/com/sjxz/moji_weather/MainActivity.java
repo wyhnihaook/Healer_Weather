@@ -255,8 +255,10 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
      * 切换当前界面动画效果
      * */
     public void switchWeatherView(BaseDrawer.Type mDrawerType){
-        weatherView.setDrawerType(mDrawerType);
-        fragment.setWeatherSave(mDrawerType);
+        if(weatherView!=null){
+            weatherView.setDrawerType(mDrawerType);
+            fragment.setWeatherSave(mDrawerType);
+        }
     }
 
     /**
@@ -328,8 +330,11 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
     }
     @Override
     protected void onDestroy() {
+        instance=null;
+        weatherView.onDestroy();
         super.onDestroy();
-//        surfaceview.onDestroy();
+
+
     }
 
 
@@ -352,5 +357,7 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
 
         return super.onKeyDown(keyCode, event);
     }
+
+
 
 }

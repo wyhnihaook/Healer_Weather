@@ -25,7 +25,7 @@ public class SunnyNightDrawer extends BaseDrawer {
 
     private ArrayList<SunnyNightHolder> holders = new ArrayList<SunnyNightHolder>();
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private static Context context;
+    private Context context;
     Bitmap bg;
 
 

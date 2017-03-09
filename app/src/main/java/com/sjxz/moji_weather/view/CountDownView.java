@@ -45,7 +45,7 @@ public class CountDownView extends View {
 
     //设置画布圆形背景
     private Paint backgroundPaint;
-    public static ValueAnimator animator;
+    public  ValueAnimator animator;
 
     public CountDownView(Context context) {
         super(context);

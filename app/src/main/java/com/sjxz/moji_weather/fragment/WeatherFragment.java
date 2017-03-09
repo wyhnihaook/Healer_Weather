@@ -408,7 +408,9 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
     public void onSuccess(ShowApiWeather data) {
         //暂停刷新
         isInitData = true;
-        pullRefreshLayout.setRefreshing(false);
+        if(pullRefreshLayout!=null){
+            pullRefreshLayout.setRefreshing(false);
+        }
         nowWeather = data.getNow().getWeather();
         LogUtils.i(nowWeather + "当前城市：=" + getTitle());
         aqi_view.setData(data.getNow().getAqiDetail());
@@ -421,8 +423,9 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
 
     @Override
     public void onError() {
-        pullRefreshLayout.setRefreshing(false);
-
+        if(pullRefreshLayout!=null){
+            pullRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
@@ -492,4 +495,14 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
     }
 
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        //解决handler的内存泄漏
+        handler.removeCallbacksAndMessages(null);
+        handler=null;
+
+        weatherFragment=null;
+    }
 }

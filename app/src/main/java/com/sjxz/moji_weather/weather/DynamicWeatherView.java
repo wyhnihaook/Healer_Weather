@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.animation.AnimationUtils;
@@ -19,7 +18,6 @@ import android.view.animation.AnimationUtils;
  */
 public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Callback {
 
-    static final String TAG = DynamicWeatherView.class.getSimpleName();
     private DrawThread mDrawThread;
 
     public DynamicWeatherView(Context context, AttributeSet attrs) {
@@ -135,7 +133,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
             mDrawThread.mRunning = true;
             mDrawThread.notify();
         }
-        Log.i(TAG, "onResume");
     }
 
     public void onPause() {
@@ -144,7 +141,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
             mDrawThread.mRunning = false;
             mDrawThread.notify();
         }
-        Log.i(TAG, "onPause");
     }
 
     public void onDestroy() {
@@ -153,7 +149,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
             mDrawThread.mQuit = true;
             mDrawThread.notify();
         }
-        Log.i(TAG, "onDestroy");
     }
 
     @Override
@@ -163,7 +158,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
             mDrawThread.mSurface = holder;
             mDrawThread.notify();
         }
-        Log.i(TAG, "surfaceCreated");
     }
 
     @Override
@@ -186,7 +180,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
             }
         }
         holder.removeCallback(this);
-        Log.i(TAG, "surfaceDestroyed");
     }
 
     private class DrawThread extends Thread {
@@ -243,7 +236,6 @@ public class DynamicWeatherView extends SurfaceView implements SurfaceHolder.Cal
                         //logger.addSplit("unlockCanvasAndPost");
                         //logger.dumpToLog();
                     } else {
-                        Log.i(TAG, "Failure locking canvas");
                     }
                     final long drawTime = AnimationUtils.currentAnimationTimeMillis() - startTime;
                     final long needSleepTime = 16 - drawTime;
