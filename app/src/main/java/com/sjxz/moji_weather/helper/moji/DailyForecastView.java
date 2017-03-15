@@ -192,18 +192,18 @@ public class DailyForecastView extends View {
 
             //上方地址
             canvas.drawText(d.tmp_max + "°", x[i], yMax[i] - textSize + textOffset+(CircleMaxY>0||CircleMaxYPre>0?-16:0), paint);// - textSize
-            canvas.drawText(Utils.prettyDate(d.date), x[i], textSize + textOffset, paint);//日期d.date.substring(5)
+            canvas.drawText(Utils.prettyDate(d.date)+"", x[i], textSize + textOffset, paint);//日期d.date.substring(5)
             canvas.drawText(d.monthandday + "", x[i], textSize * 2.5f + textOffset, paint);//“晴"
-            canvas.drawText(d.day_weather, x[i], textSize * 4f + textOffset, paint);//微风
+            canvas.drawText(d.day_weather+"", x[i], textSize * 4f + textOffset, paint);//微风
             canvas.drawBitmap(Utils.big(checkDayWeather(d.day_weather), 80, 80), x[i] - 40, textSize * 5f + textOffset, paint);
 
 
             //下方数据
             canvas.drawText(d.tmp_min + "°", x[i], yMin[i] + textSize + textOffset, paint);
             canvas.drawBitmap(Utils.big(checkNightWeather(d.night_weather), 80, 80), x[i] - 40, textSize * 20.5f + textOffset, paint);
-            canvas.drawText(d.night_weather, x[i], textSize * 24f + textOffset, paint);//日期d.date.substring(5)
+            canvas.drawText(d.night_weather+"", x[i], textSize * 24f + textOffset, paint);//日期d.date.substring(5)
             canvas.drawText(d.wind_sc + "", x[i], textSize * 25.5f + textOffset, paint);//“晴"
-            canvas.drawText(d.cloud_power, x[i], textSize * 27f + textOffset, paint);//微风
+            canvas.drawText(d.cloud_power+"", x[i], textSize * 27f + textOffset, paint);//微风
 
             //圆点
 

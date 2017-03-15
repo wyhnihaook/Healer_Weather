@@ -24,6 +24,7 @@ import com.sjxz.moji_weather.R;
 import com.sjxz.moji_weather.adapter.WeatherLifeAdapter;
 import com.sjxz.moji_weather.base.BaseLFragment;
 import com.sjxz.moji_weather.bean.weather.DailyForecastBean;
+import com.sjxz.moji_weather.bean.weather.NotifyBean;
 import com.sjxz.moji_weather.bean.weather.ShowApiWeather;
 import com.sjxz.moji_weather.bean.weather.ShowApiWeatherNormalInner;
 import com.sjxz.moji_weather.bean.weather.WeatherBaseLifeBean;
@@ -176,6 +177,7 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
     @Bind(R.id.myscrollview)
     MyScrollView myscrollview;
 
+    public NotifyBean notifyBeanBundle;
 
     private WeatherPresenterImpl weatherPresenter;
 
@@ -398,10 +400,14 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
 
     @Override
     public void initialViewData(ShowApiWeather data, List<ShowApiWeatherNormalInner> showApiWeatherNormalInnerList) {
-        weatherPresenter.setTopViewData(data, showApiWeatherNormalInnerList, now_weather, now_temperature, now_direction, now_humidity,
+        NotifyBean notifyBean= weatherPresenter.setTopViewData(data, showApiWeatherNormalInnerList, now_weather, now_temperature, now_direction, now_humidity,
                 today_temperature_range, today_weather, today_weather_pic, tomorrow_temperature_range,
                 tomorrow_weather, tomorrow_weather_pic, air_quality, now_small_temperature, now_pressure
                 , pm2_5, pm10, so2, no2);
+        notifyBean.setCity(getTitle()+"");
+        notifyBeanBundle=notifyBean;
+        //传递广播提醒主界面surfaceview更改数据
+        EventBus.getDefault().post(new EventCenter(Constants.EVENTBUS_CHANGE_WEATHER, notifyBean));
     }
 
     @Override
@@ -416,8 +422,6 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
         aqi_view.setData(data.getNow().getAqiDetail());
 
         handler.sendEmptyMessage(0);
-        //传递广播提醒主界面surfaceview更改数据
-        EventBus.getDefault().post(new EventCenter(Constants.EVENTBUS_CHANGE_WEATHER, nowWeather));
     }
 
 

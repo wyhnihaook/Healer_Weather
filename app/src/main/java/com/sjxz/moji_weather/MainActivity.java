@@ -14,10 +14,12 @@ import com.sjxz.moji_weather.adapter.MxxFragmentsAdapter;
 import com.sjxz.moji_weather.base.BaseActivity;
 import com.sjxz.moji_weather.base.BaseLFragment;
 import com.sjxz.moji_weather.base.SimpleBackPage;
+import com.sjxz.moji_weather.bean.weather.NotifyBean;
 import com.sjxz.moji_weather.fragment.WeatherFragment;
 import com.sjxz.moji_weather.helper.EventCenter;
 import com.sjxz.moji_weather.helper.MxxViewPager;
 import com.sjxz.moji_weather.helper.UIHelper;
+import com.sjxz.moji_weather.helper.WeatherService;
 import com.sjxz.moji_weather.mvp.presenter.impl.MainPresenterImpl;
 import com.sjxz.moji_weather.mvp.view.MainView;
 import com.sjxz.moji_weather.util.Constants;
@@ -54,6 +56,10 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
     private String nowWeather="晴";
 
     private Long mExitTime=0L;
+
+    private NotifyBean notifyBean;
+
+    private WeatherService weatherService;
     /**
      * 默认的天气情况
      * */
@@ -165,8 +171,10 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
         int eventCode = eventCenter.getEventCode();
         switch (eventCode) {
             case Constants.EVENTBUS_CHANGE_WEATHER:
-                if((String)eventCenter.getData()!=null){
-                    nowWeather=(String)eventCenter.getData();
+                if(eventCenter.getData()!=null){
+                    notifyBean=(NotifyBean)eventCenter.getData();
+                    nowWeather=notifyBean.getNow_state();
+                    initNotifyData(notifyBean);
                 }
                 handler.sendEmptyMessage(3);
                 break;
@@ -184,6 +192,9 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
                 //通知surfaceView层更新动画
                 if(fragment.nowWeather!=null){
                     nowWeather=fragment.nowWeather;
+                }
+                if(fragment.notifyBeanBundle!=null){
+                    initNotifyData(fragment.notifyBeanBundle);
                 }
                 handler.sendEmptyMessage(3);
                 break;
@@ -308,6 +319,18 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
         tv_date.setText(time);
     }
 
+    //每次切换都进行重绘
+    @Override
+    public void initNotify(WeatherService weatherService) {
+        //获取传递的数据
+        this.weatherService=weatherService;
+    }
+
+    private void initNotifyData(NotifyBean notifyBean){
+        weatherService.showNotification(this,notifyBean.getNow_tmp(),notifyBean.getNow_range(),notifyBean.getNow_state()
+                ,notifyBean.getCity(),notifyBean.getDrawableId());
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -332,6 +355,7 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
     protected void onDestroy() {
         instance=null;
         weatherView.onDestroy();
+        mainPresenter.unbindPlaybackService();
         super.onDestroy();
 
 

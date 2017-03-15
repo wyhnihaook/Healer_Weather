@@ -2,6 +2,8 @@ package com.sjxz.moji_weather.mvp.view;
 
 import android.view.animation.AlphaAnimation;
 
+import com.sjxz.moji_weather.helper.WeatherService;
+
 import java.util.List;
 
 /**
@@ -17,4 +19,6 @@ public interface MainView {
     void intialCityName(List<String> cityNames);
 
     void initialTime(String time);
+
+    void initNotify(WeatherService weatherService);
 }

@@ -1,9 +1,11 @@
 package com.sjxz.moji_weather.util;
 
 import android.app.Activity;
+import android.app.Notification;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -12,8 +14,12 @@ import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
+import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,6 +29,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 
 /**
  * @author WYH_Healer
@@ -419,6 +426,64 @@ public class Utils {
         //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
         //return _bmp;
         return output;
+    }
+
+
+
+    //根据不同的手机适配通知栏的颜色
+
+    public static boolean isDarkNotificationTheme(Context context) {
+        return !isSimilarColor(Color.BLACK, getNotificationColor(context));
+    }
+
+    /**
+     * 获取通知栏颜色
+     * @param context
+     * @return
+     */
+    public static int getNotificationColor(Context context) {
+        NotificationCompat.Builder builder=new NotificationCompat.Builder(context);
+        Notification notification=builder.build();
+        int layoutId=notification.contentView.getLayoutId();
+        ViewGroup viewGroup= (ViewGroup) LayoutInflater.from(context).inflate(layoutId, null, false);
+        if (viewGroup.findViewById(android.R.id.title)!=null) {
+            return ((TextView) viewGroup.findViewById(android.R.id.title)).getCurrentTextColor();
+        }
+        return findColor(viewGroup);
+    }
+
+    private static boolean isSimilarColor(int baseColor, int color) {
+        int simpleBaseColor=baseColor|0xff000000;
+        int simpleColor=color|0xff000000;
+        int baseRed= Color.red(simpleBaseColor)-Color.red(simpleColor);
+        int baseGreen=Color.green(simpleBaseColor)-Color.green(simpleColor);
+        int baseBlue=Color.blue(simpleBaseColor)-Color.blue(simpleColor);
+        double value=Math.sqrt(baseRed*baseRed+baseGreen*baseGreen+baseBlue*baseBlue);
+        if (value<180.0) {
+            return true;
+        }
+        return false;
+    }
+
+    private static int findColor(ViewGroup viewGroupSource) {
+        int color=Color.TRANSPARENT;
+        LinkedList<ViewGroup> viewGroups=new LinkedList<>();
+        viewGroups.add(viewGroupSource);
+        while (viewGroups.size()>0) {
+            ViewGroup viewGroup1=viewGroups.getFirst();
+            for (int i = 0; i < viewGroup1.getChildCount(); i++) {
+                if (viewGroup1.getChildAt(i) instanceof ViewGroup) {
+                    viewGroups.add((ViewGroup) viewGroup1.getChildAt(i));
+                }
+                else if (viewGroup1.getChildAt(i) instanceof TextView) {
+                    if (((TextView) viewGroup1.getChildAt(i)).getCurrentTextColor()!=-1) {
+                        color=((TextView) viewGroup1.getChildAt(i)).getCurrentTextColor();
+                    }
+                }
+            }
+            viewGroups.remove(viewGroup1);
+        }
+        return color;
     }
 
 
