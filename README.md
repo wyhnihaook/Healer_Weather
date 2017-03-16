@@ -22,5 +22,8 @@ WYH_Healer 
 ## ![image](https://github.com/wyhnihaook/Healer_Weather/raw/master/img-holder/weather7.png)
 ## ![image](https://github.com/wyhnihaook/Healer_Weather/raw/master/img-holder/weather8.png)
 #### 选择城市界面上也是仿照联系人列表进行自定义展示
+
+## ![image](https://github.com/wyhnihaook/Healer_Weather/raw/master/img-holder/weather10.png)
+#### 添加通知栏提供学习，通知栏界面随城市不同而转变，生命周期直到App进程完全删除 
  最后希望 大家会喜欢Healer天气，里面用的知识点一部分都是采集于github上的大牛，学海无涯，互相学习互相帮助。希望我的Healer天气可以帮到你
 >最后的最后   下载的童鞋希望多多star and fork；
