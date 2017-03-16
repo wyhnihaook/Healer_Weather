@@ -99,7 +99,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        BaseAppManager.getInstance().removeActivity(this);
         if (toggleOverridePendingTransition()) {
             switch (getOverridePendingTransitionType()) {
                 case LEFT:
@@ -131,6 +130,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         if (isBindEventBus()) {
             EventBus.getDefault().unregister(this);
         }
+        BaseAppManager.getInstance().removeActivity(this);
     }
 
 

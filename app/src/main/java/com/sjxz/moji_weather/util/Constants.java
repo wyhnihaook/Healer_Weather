@@ -23,4 +23,6 @@ public class Constants {
     public final static int EVENTBUS_ADD_CITY=EVENTBUS_DELETE_CITY_MAIN+10;
 
     public final static int EVENTBUS_ADD_CITY_MAIN=EVENTBUS_ADD_CITY+10;
+
+    public final static int EVENTBUS_CHANGE_NOTIFY=EVENTBUS_ADD_CITY_MAIN+10;
 }

@@ -107,7 +107,20 @@ public class AllCityFragment extends BaseFragment implements CityView {
                 cityPresenter.deleteCity(cityName);
                 break;
             case Constants.EVENTBUS_ADD_CITY:
+                boolean isHaveName=false;
                 String addCityName= (String) eventCenter.getData();
+                if(allCityAdapter!=null&&allCityAdapter.getDatas().size()>0){
+                    for(String s: (List<String>)allCityAdapter.getDatas()){
+                        if(s.equals(addCityName)||s.contains(addCityName)||addCityName.contains(s)){
+                            //说明已经存在
+                            isHaveName=true;
+                            break;
+                        }
+                    }
+                }
+                if(isHaveName){
+                    return ;
+                }
                 cityPresenter.addCity(addCityName);
 
                 cityPresenter.initialMain();//重新绘制

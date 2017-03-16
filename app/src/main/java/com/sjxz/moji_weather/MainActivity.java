@@ -68,6 +68,9 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
     private BaseLFragment[] fragments;
     private int tempPosition=0;
 
+    //标识前台展示
+    private boolean isForeground=true;
+
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -193,9 +196,6 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
                 if(fragment.nowWeather!=null){
                     nowWeather=fragment.nowWeather;
                 }
-                if(fragment.notifyBeanBundle!=null){
-                    initNotifyData(fragment.notifyBeanBundle);
-                }
                 handler.sendEmptyMessage(3);
                 break;
             case Constants.EVENTBUS_CHECK:
@@ -203,6 +203,11 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
                 break;
             case Constants.EVENTBUS_DELETE_CITY_MAIN:
                 mainPresenter.initialMain();
+                break;
+            case Constants.EVENTBUS_CHANGE_NOTIFY:
+                if(fragment.notifyBeanBundle!=null){
+                    initNotifyData(fragment.notifyBeanBundle);
+                }
                 break;
         }
     }
@@ -243,7 +248,6 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
 //        SpUtils.setListObj(this,list,Constants.CITY_NAME);
 
         instance=this;
-
         mainPresenter=new MainPresenterImpl(this,this);
         mainPresenter.initialMain();
 
@@ -302,6 +306,7 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+
                 tempPosition=position;
                 fragment = (WeatherFragment) fragments[position];
                 fragment.postRefresh(mDrawerType);
@@ -327,7 +332,7 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
     }
 
     private void initNotifyData(NotifyBean notifyBean){
-        weatherService.showNotification(this,notifyBean.getNow_tmp(),notifyBean.getNow_range(),notifyBean.getNow_state()
+        weatherService.showNotification(this.getApplicationContext(),notifyBean.getNow_tmp(),notifyBean.getNow_range(),notifyBean.getNow_state()
                 ,notifyBean.getCity(),notifyBean.getDrawableId());
     }
 
@@ -346,6 +351,8 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
         super.onResume();
         weatherView.onResume();
     }
+
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -353,14 +360,13 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
     }
     @Override
     protected void onDestroy() {
+        mainPresenter.unbindPlaybackService();
         instance=null;
         weatherView.onDestroy();
-        mainPresenter.unbindPlaybackService();
         super.onDestroy();
 
 
     }
-
 
     @Override
     public void onBackPressed() {

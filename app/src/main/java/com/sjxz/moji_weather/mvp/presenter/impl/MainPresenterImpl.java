@@ -50,14 +50,16 @@ public class MainPresenterImpl implements MainPresenter{
 
 
     public void bindPlaybackService() {
-        context.bindService(new Intent(context, WeatherService.class), mConnect, Context.BIND_AUTO_CREATE);
+        //为了防止内存泄漏
+        //Activity对象包括大量的布局和资源文件， 一旦它被该单例持有，它所持有的资源在应用结束前都不会被释放。修改的方法很简单：传进来的Context用ApplicationContext就可以了。ApplicationContext对象在应用整个生命周期中有且只有一个对象。持有它的引用不会占用更多资源。
+        context.getApplicationContext().bindService(new Intent(context.getApplicationContext(), WeatherService.class), mConnect, Context.BIND_AUTO_CREATE);
         mIsServiceBound = true;
     }
 
 
     public void unbindPlaybackService() {
         if (mIsServiceBound) {
-            context.unbindService(mConnect);
+            context.getApplicationContext().unbindService(mConnect);
             mIsServiceBound = false;
         }
     }

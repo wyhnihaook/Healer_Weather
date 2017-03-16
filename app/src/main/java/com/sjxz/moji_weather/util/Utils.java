@@ -1,6 +1,7 @@
 package com.sjxz.moji_weather.util;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -21,6 +22,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.andview.refreshview.utils.LogUtilss;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author WYH_Healer
@@ -486,6 +490,23 @@ public class Utils {
         return color;
     }
 
+
+    public static boolean isBackground(Context context) {
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
+        for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+            if (appProcess.processName.equals(context.getPackageName())) {
+                if (appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_BACKGROUND) {
+                    LogUtilss.i("后台"+appProcess.processName);
+                    return true;
+                }else{
+                    LogUtilss.i("前台"+ appProcess.processName);
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
 
 
 }

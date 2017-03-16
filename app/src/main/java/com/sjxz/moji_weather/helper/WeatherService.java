@@ -65,14 +65,23 @@ public class WeatherService extends Service {
     }
 
     NotificationManager mNotificationManager;
-    //需要当前温度，最高和最低温度，当前情况，图片信息，地址
-    public void showNotification(Context context,String now_tmp,String now_range,String now_state,String city,int drawableId) {
-        //展示标题栏
-        //判断是否是后台应用
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
+    NotificationCompat.Builder mBuilder;
+    RemoteViews mRemoteViews;
 
-         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+    //需要当前温度，最高和最低温度，当前情况，图片信息，地址,是否在前台工作
+    public void showNotification(Context context, String now_tmp, String now_range, String now_state, String city, int drawableId) {
+        //展示标题栏
+
+        PendingIntent contentIntent = PendingIntent.getActivity(context.getApplicationContext(), 0, new Intent(context.getApplicationContext(), MainActivity.class), 0);
+
+        if(mNotificationManager==null){
+            mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        }
+
+        if(mBuilder==null){
+            mBuilder = new NotificationCompat.Builder(this);
+        }
+
 //      系统自带样式的通知栏
 //        mBuilder.setContentTitle("测试标题")//设置通知栏标题
 //                .setContentText("测试内容") //设置通知栏显示内容
@@ -88,26 +97,26 @@ public class WeatherService extends Service {
 //                .setSmallIcon(R.mipmap.ic_launcher);//设置通知小ICON
 
 
-
-
         //自定义样式的标题栏
 
 
-        RemoteViews mRemoteViews = new RemoteViews(getPackageName(), R.layout.notify_view);
+        if(mRemoteViews==null){
+            mRemoteViews = new RemoteViews(getPackageName(), R.layout.notify_view);
 
-        mRemoteViews.setInt(R.id.tv_now_tmp, "setTextColor", Utils.isDarkNotificationTheme(context)==true?Color.WHITE:Color.BLACK);
-        mRemoteViews.setInt(R.id.tv_now, "setTextColor", Utils.isDarkNotificationTheme(context)==true?Color.WHITE:Color.BLACK);
-        mRemoteViews.setInt(R.id.tv_state, "setTextColor", Utils.isDarkNotificationTheme(context)==true?Color.WHITE:Color.BLACK);
-        mRemoteViews.setInt(R.id.tv_city, "setTextColor", Utils.isDarkNotificationTheme(context)==true?Color.WHITE:Color.BLACK);
+            mRemoteViews.setInt(R.id.tv_now_tmp, "setTextColor", Utils.isDarkNotificationTheme(context) == true ? Color.WHITE : Color.BLACK);
+            mRemoteViews.setInt(R.id.tv_now, "setTextColor", Utils.isDarkNotificationTheme(context) == true ? Color.WHITE : Color.BLACK);
+            mRemoteViews.setInt(R.id.tv_state, "setTextColor", Utils.isDarkNotificationTheme(context) == true ? Color.WHITE : Color.BLACK);
+            mRemoteViews.setInt(R.id.tv_city, "setTextColor", Utils.isDarkNotificationTheme(context) == true ? Color.WHITE : Color.BLACK);
+        }
 
         mRemoteViews.setTextViewText(R.id.tv_now_tmp, now_tmp);
         mRemoteViews.setTextViewText(R.id.tv_now, now_range);
         mRemoteViews.setTextViewText(R.id.tv_state, now_state);
         mRemoteViews.setTextViewText(R.id.tv_city, city);
 
-        mRemoteViews.setImageViewResource(R.id.iv_state,drawableId);
+        mRemoteViews.setImageViewResource(R.id.iv_state, drawableId);
 
-
+        //判断是否是当前运行的app
         mBuilder.setContent(mRemoteViews)
                 .setContentIntent(contentIntent)
                 .setWhen(System.currentTimeMillis())// 通知产生的时间，会在通知信息里显示
@@ -117,7 +126,7 @@ public class WeatherService extends Service {
                 .setSmallIcon(R.mipmap.icon);
 
 
-        int  notifyId=1;
+        int notifyId = 1;
 
         Notification notify = mBuilder.build();
         notify.flags = Notification.FLAG_AUTO_CANCEL;
@@ -126,10 +135,11 @@ public class WeatherService extends Service {
 
 
     //清除所有通知
-    public void notifyCancle(){
-        if(mNotificationManager!=null){
+    public void notifyCancle() {
+        if (mNotificationManager != null) {
             mNotificationManager.cancelAll();
         }
     }
+
 
 }

@@ -323,6 +323,8 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
             if (type != mDrawerType) {
                 EventBus.getDefault().post(new EventCenter(Constants.EVENTBUS_SECOND));
             }
+            //提示通知栏更改数据
+            EventBus.getDefault().post(new EventCenter(Constants.EVENTBUS_CHANGE_NOTIFY));
         }
     }
 
