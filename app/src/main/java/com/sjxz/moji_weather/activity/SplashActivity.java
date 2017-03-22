@@ -143,4 +143,5 @@ public class SplashActivity extends BaseActivity implements SplashView {
     protected void onDestroy() {
         super.onDestroy();
     }
+
 }

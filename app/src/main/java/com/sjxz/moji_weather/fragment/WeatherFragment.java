@@ -38,6 +38,7 @@ import com.sjxz.moji_weather.util.Constants;
 import com.sjxz.moji_weather.util.Utils;
 import com.sjxz.moji_weather.view.MyScrollView;
 import com.sjxz.moji_weather.view.PullRefreshLayout;
+import com.sjxz.moji_weather.view.ScrollViewLisenter;
 import com.sjxz.moji_weather.weather.BaseDrawer;
 
 import java.util.ArrayList;
@@ -52,8 +53,7 @@ import de.greenrobot.event.EventBus;
  * Created by xz on 2017/2/7.
  * Role:结合Viewpager的懒加载，避免数据错乱
  */
-@TargetApi(Build.VERSION_CODES.M)
-public class WeatherFragment extends BaseLFragment implements RxWeatherView, View.OnClickListener, View.OnScrollChangeListener {
+public class WeatherFragment extends BaseLFragment implements RxWeatherView, View.OnClickListener, ScrollViewLisenter {
 
     public static WeatherFragment weatherFragment;
 
@@ -290,7 +290,7 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
         //使用懒加载
         //        postRefresh();
 
-        myscrollview.setOnScrollChangeListener(this);
+        myscrollview.setScrollViewLisenter(this);
     }
 
 
@@ -474,21 +474,10 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
 
     int scrollYTemp;
 
-    @Override
-    public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-        //随着滚动距离将屏幕渐变
-        if (scrollY < heightWindow && oldScrollY - scrollY < 0) {
-            //背景渐变,向下滑动
-            MainActivity.instance.view_bg.getBackground().setAlpha(scrollY / alpha < 0 ? 0 : scrollY / alpha);
-
-        } else if (oldScrollY - scrollY > 0 && scrollY < heightWindow) {
-            //向上滑动,背景渐变
-            MainActivity.instance.view_bg.getBackground().setAlpha(scrollY / alpha < 0 ? 0 : scrollY / alpha);
-
-        }
-
-        scrollYTemp = scrollY;
-    }
+//    @Override
+//    public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//
+//    }
 
 
     private void changeBgAlpha(){
@@ -510,5 +499,21 @@ public class WeatherFragment extends BaseLFragment implements RxWeatherView, Vie
         handler=null;
 
         weatherFragment=null;
+    }
+
+    @Override
+    public void onScrollChanged(MyScrollView scrollView, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+        //随着滚动距离将屏幕渐变
+        if (scrollY < heightWindow && oldScrollY - scrollY < 0) {
+            //背景渐变,向下滑动
+            MainActivity.instance.view_bg.getBackground().setAlpha(scrollY / alpha < 0 ? 0 : scrollY / alpha);
+
+        } else if (oldScrollY - scrollY > 0 && scrollY < heightWindow) {
+            //向上滑动,背景渐变
+            MainActivity.instance.view_bg.getBackground().setAlpha(scrollY / alpha < 0 ? 0 : scrollY / alpha);
+
+        }
+
+        scrollYTemp = scrollY;
     }
 }

@@ -120,6 +120,7 @@ public class MainActivity extends BaseActivity implements MainView, View.OnClick
                         case "雷阵雨伴有冰雹":
                         case "雨夹雪":
                         case "冻雨":
+                        case "雨":
                             mDrawerType=BaseDrawer.Type.RAIN_D;
                             switchWeatherView(mDrawerType);
                             break;
